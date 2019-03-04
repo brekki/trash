@@ -7,13 +7,16 @@ span {
 	color: white;
 }
 
-section {
+ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
+	padding: 0;
 }
 
-.bar {
+.bus {
+	display: inline-block;
 	width: 50%;
 	margin-top: 1%;
 	background: mistyrose;
