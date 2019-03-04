@@ -1,0 +1,21 @@
+p {
+	display: inline-block;
+	color: white;
+}
+
+span {
+	color: white;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.bar {
+	width: 50%;
+	margin-top: 1%;
+	background: mistyrose;
+	text-align: center;
+}
