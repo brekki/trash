@@ -3,13 +3,14 @@ const busListUlList = busListUl.children;
 
 const getNums = inputList => {
     [...inputList].forEach((item, idx) => {
-        console.log(idx, item.dataset.pos);
+        // console.log(idx, item.dataset.pos);
         item.dataset.pos = idx;
     });
 };
 
 const moveRoute = e => {
     const currentEl = e.target.parentNode;
+    let currentElSpan = currentEl.querySelector(".rank").textContent;
     const nextEl = currentEl.nextElementSibling;
     busListUl.insertBefore(nextEl, currentEl);
     getNums(busListUlList);
