@@ -1,8 +1,3 @@
-p {
-	display: inline-block;
-	color: white;
-}
-
 span {
 	color: white;
 }
@@ -15,10 +10,18 @@ ul {
 	padding: 0;
 }
 
+li.bus::before{
+	content: "Route " attr(data-route) " Position " attr(data-pos);
+	color: white;
+	display: inline-block;
+	height: 2em;
+}
+
 .bus {
 	display: inline-block;
 	width: 50%;
 	margin-top: 1%;
 	background: mistyrose;
 	text-align: center;
+	padding-top: 1%;
 }

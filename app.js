@@ -8,13 +8,38 @@ const getNums = inputList => {
     });
 };
 
-const moveRoute = e => {
-    const currentEl = e.target.parentNode;
-    let currentElSpan = currentEl.querySelector(".rank").textContent;
-    const nextEl = currentEl.nextElementSibling;
-    busListUl.insertBefore(nextEl, currentEl);
-    getNums(busListUlList);
+const calcChange = (pos1, pos2) => {
+    const change = pos1 - pos2;
+    console.log(change);
 };
+
+const moveRouteDown = e => {
+    const currentEl = e.target.parentNode;
+    const nextEl = currentEl.nextElementSibling;
+    const origPos = Number(currentEl.dataset.pos);
+    const updatePos = Number(nextEl.dataset.pos);
+    if (currentEl.dataset.pos === String((busListUl.children.length - 1))) {
+        return false;
+    } else {
+        busListUl.insertBefore(nextEl, currentEl);
+        calcChange(origPos, updatePos);
+        getNums(busListUlList);
+    }
+
+};
+
+const moveRouteUp = e => {
+    const currentEl = e.target.parentNode;
+    const prevEl = currentEl.previousElementSibling;
+    if (currentEl.dataset.pos === "0") {
+        return false;
+    } else {
+        busListUl.insertBefore(currentEl, prevEl);
+        getNums(busListUlList);
+    }
+
+};
+
 
 // visual .rank can be calculated as data-pos + 1
 // on click "up"/"down", pos needs to be switched with above/below li el
@@ -25,9 +50,9 @@ busListUl.addEventListener('click', event => {
     if (event.target.tagName !== "SPAN") {
         return false;
     } else if (event.target.tagName === "SPAN" && event.target.className === "up") {
-        return;
+        moveRouteUp(event);
     } else {
-        moveRoute(event);
+        moveRouteDown(event);
     }
 });
 
